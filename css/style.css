@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-image: url(../image/harp.png);
-    background-size: cover;
+    background-size: 810px;
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: fixed;    
@@ -12,8 +12,8 @@ body{
     .loginbox{
         width: 320px;
         height: 420px;
-        background: #000;
-        color: #fff;
+        background: transparent;
+        color: rgb(19, 16, 218);
         top: 50%;
         left: 50%;
         position: absolute;
