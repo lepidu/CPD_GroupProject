@@ -1,0 +1,80 @@
+<html>
+    <body>
+        <h1> Registration Renewal </h1>
+            <form id="form_renewal">
+
+                <label for="regis_num">Registration number:</label><br />
+                <input type="text" name="regis_num" required />
+                <br /><br />
+                <label for="irp_expiry">Current IRP expiry date:</label><br />
+                <input type="text" name="irp_expiry" required />
+                <br /><br />
+                <label for="name">Forename(s) as on your current IRPP card:</label><br />
+                <input type="text" name="name" required />
+                <br /><br />
+                <label for="surname">Surname(s) as on your current IRP card:</label><br />
+                <input type="text" name="surname" required />
+                <br /><br />
+                <label for="date">Date of birth:</label><br />
+                <input type="text" name="date" required />
+                <br /><br />
+                <label for="gender">Gender:</label><br />
+                <input type="text" name="gender" required />
+                <br /><br />
+                <label for="phone">Phone number:</label><br />
+                <input type="text" name="phone" required />
+                <br /><br />
+                <label for="address">Current postal address:</label><br />
+                <input type="text" name="address" required />
+                <br /><br />
+                <label for="town">Town/City:</label><br />
+                <input type="text" name="town" required />
+                <br /><br />
+                <label for="county">County:</label><br />
+                <input type="text" name="county" required />
+                <br /><br />
+                <label for="eircode">Eircode:</label><br />
+                <input type="text" name="eircode" required />
+                <br /><br />
+                <label for="nationality">Nationality:</label><br />
+                <input type="text" name="nationality" required />
+                <br /><br />
+                <label for="pass_num">Passport number:</label><br />
+                <input type="text" name="pass_num" required />
+                <br /><br />
+                <label for="pass_expiry">Passport expiry date:</label><br />
+                <input type="text" name="pass_expiry" required />
+                <br /><br />
+                <label for="visa_type">Permission type for renewal:</label><br />
+                <input type="text" name="visa_type" required />
+                <br /><br />
+                <label for="school">Institute name:</label><br />
+                <input type="text" name="school" required />
+                <br /><br />
+                <label for="course">Institute course:</label><br />
+                <input type="text" name="course" required />
+                <br /><br />
+                <label for="course_year">Academic / course year or course module:</label><br />
+                <input type="text" name="course_year" required />
+                <br /><br />
+                <label for="student_id">Student ID / student number:</label><br />
+                <input type="text" name="student_id" required />
+                <br /><br />
+                <input type="submit" />
+            </form>
+            <script>
+                const electron = require("electron");
+                const { ipcRenderer } = electron;
+                const form = document.getElementById("form_renewal");
+                const elements = {};
+                form.addEventListener("submit", event => {
+                event.preventDefault();
+                for (let i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].type !== "submit")
+                elements[form.elements[i].name] = form.elements[i].value;
+                }
+                ipcRenderer.send("appointment:create", elements);
+                });
+            </script>
+    </body>
+</html>
