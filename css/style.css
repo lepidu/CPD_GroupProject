@@ -3,6 +3,7 @@ body{
     padding: 0;
     background-image: url(../image/harp.png);
     background-size: 810px;
+    background-color: white;
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: fixed;    
