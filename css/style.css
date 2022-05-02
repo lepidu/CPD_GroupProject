@@ -13,17 +13,18 @@ body{
         width: 320px;
         height: 420px;
         background: transparent;
-        color: rgb(19, 16, 218);
+        color: rgb(16, 19, 128);
         top: 50%;
-        left: 50%;
-        position: absolute;
+        left: 80%;
+        position: fixed;
         transform: translate(-50%,-50%);
         box-sizing: border-box;
         padding: 70px 30px;
     }
+   
     .avatar{
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         
         border-radius: 50%;
         position: absolute;
@@ -36,6 +37,8 @@ body{
         padding: 0 0 20px;
         text-align: center;
         font-size: 22px;
+        
+        
 
     }
     
@@ -65,13 +68,57 @@ body{
     {
         border: none;
         outline: none;
-        height: 40px;
+        height: 30px;
         background: #fb2525;
         color: #fff;
         font-size: 18px;
         border-radius: 20px;
     }
     .loginbox input[type="submit"]:hover
+    {
+        cursor: pointer;
+        background: #ffc107;
+        color: #000;
+    }
+    .loginbox2{
+        width: 320px;
+        height: 420px;
+        background: transparent;
+        color: rgb(19, 16, 218);
+        top: 50%;
+        left: 20%;
+        position: fixed;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    .loginbox2 input{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+   
+    .loginbox2 input[type="text"], input[type="password"]
+    {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: whitesmoke;
+        outline: none;
+        height: 40px;
+        color: rgb(8, 8, 8);
+        font-size: 16px;    
+
+    }
+    .loginbox2 input[type="submit"]
+    {
+        border: none;
+        outline: none;
+        height: 30px;
+        background: #fb2525;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+    }
+    .loginbox2 input[type="submit"]:hover
     {
         cursor: pointer;
         background: #ffc107;
