@@ -106,3 +106,4 @@ canvas.toDataURL('image/png').replace(/^data:image\/(png|jpg|jpeg);base64,/
  }, savePhoto);
 }
 window.onload = initialize;
+

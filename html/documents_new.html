@@ -16,12 +16,7 @@
                 <label for="irp">Signature: </label><br />
                 <input type="file" name="password" required />
                 <br /><br />
-                <label for="receipt">Photo:</label><br />
-                <canvas width="800" height="600"></canvas>
-                <video autoplay></video>
-                <div id="takePhoto" onclick="takePhoto()">
-                <i class="fa fa-camera" aria-hidden="true"></i>
-                </div>
+                              
                 <input type="file" name="email" required />
                 <br /><br />
                 <label for="letter">Enrollment letter:</label><br />
@@ -38,20 +33,7 @@
                 <br /><br />
                 <input type="submit" />
             </form>
-            <!-- Edit this part-->
-            <script>
-                const electron = require("electron");
-                const { ipcRenderer } = electron;
-                const form = document.getElementById("form_login");
-                const elements = {};
-                form.addEventListener("submit", event => {
-                event.preventDefault();
-                for (let i = 0; i < form.elements.length; i++) {
-                if (form.elements[i].type !== "submit")
-                elements[form.elements[i].name] = form.elements[i].value;
-                }
-                ipcRenderer.send("appointment:create", elements);
-                });
-            </script>
+            
+            
     </body>
 </html>
