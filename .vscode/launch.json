@@ -1,0 +1,21 @@
+{
+    "name":"CPD_GroupProject",
+    "main":"script.js",
+    "version": "1.0.0",
+    "description":"",
+
+    "scripts":{
+        "starts":"electron ."
+    },
+    "author": "",
+ "license": "ISC",
+ "dependencies": {
+ "electron": "^5.0.13",
+ "electron-builder": "^5.1.0",
+ "electron-packager": "^8.1.2",
+ "uuid": "^8.1.2"
+ }
+}
+
+
+
