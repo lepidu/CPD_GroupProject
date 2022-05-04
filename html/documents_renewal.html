@@ -26,22 +26,11 @@
                 <label for="insurance">Insurance:</label><br />
                 <input type="file" name="password" required />
                 <br /><br />
-                <input type="submit" />
+                <input type="submit" id="save-file" />
             </form>
             <!-- Edit this part-->
             <script>
-                const electron = require("electron");
-                const { ipcRenderer } = electron;
-                const form = document.getElementById("form_login");
-                const elements = {};
-                form.addEventListener("submit", event => {
-                event.preventDefault();
-                for (let i = 0; i < form.elements.length; i++) {
-                if (form.elements[i].type !== "submit")
-                elements[form.elements[i].name] = form.elements[i].value;
-                }
-                ipcRenderer.send("appointment:create", elements);
-                });
+            
             </script>
     </body>
 </html>

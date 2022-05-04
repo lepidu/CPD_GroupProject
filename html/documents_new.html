@@ -2,38 +2,45 @@
     <head>
         <title>Upload Documents</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <script src="/js/script.js"></script>
+        <script src="/js/main.js"></script>
     </head>
-
     <body>
         <h1> Supporting Documents </h1>
-            <form id="form_new_doc">
-
-                
+            <form id="form_new_doc" action="photo.html">                
                 <label for="pass">Passport:</label><br />
                 <input type="file" name="pass" required />
                 <br /><br />
                 <label for="irp">Signature: </label><br />
-                <input type="file" name="password" required />
-                <br /><br />
-                              
-                <input type="file" name="email" required />
+                <input type="file" name="signature" required />
                 <br /><br />
                 <label for="letter">Enrollment letter:</label><br />
-                <input type="file" name="password" required />
+                <input type="file" name="letter" required />
                 <br /><br />
                 <label for="attendance">Receipt document:</label><br />
-                <input type="file" name="email" required />
+                <input type="file" name="receipt" required />
                 <br /><br />
                 <label for="insurance">Insurance:</label><br />
-                <input type="file" name="password" required />
+                <input type="file" name="insurance" required />
                 <br /><br />
                 <label for="insurance">Bank statement:</label><br />
-                <input type="file" name="password" required />
+                <input type="file" name="bank" required />
                 <br /><br />
                 <input type="submit" />
             </form>
-            
-            
+            <script>
+                const ipc = require('electron').ipcRenderer;
+                const form = document.getElementById('form_new_doc');
+                const elements = {};
+
+                form.addEventListener("submit", event => {
+                event.preventDefault();
+
+                for (let i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].type !== "submit")
+                elements[form.elements[i].name] = form.elements[i].value;
+                }
+                ipc.send("newUser:document", elements);
+                });  
+            </script>            
     </body>
 </html>
