@@ -1,3 +1,13 @@
+
+'use strict';
+const { strict } = require('assert');
+const electron = require('electron');
+const dialog = electron.remote.dialog;
+const fs = require('fs');
+let photoData;
+let video;
+
+
 var myInput = document.getElementById("psw");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
@@ -69,3 +79,33 @@ myInput.onkeyup = function(){
 
 
 
+'use strict';
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+const remote = require('electron').remote;
+ 
+let mainWindow = null;
+app.on('window-all-closed',() =>{
+  if(process.platform !=='darwin') app.quit;
+  
+});
+
+app.on('ready',()=>{
+  mainWindow = new BrowserWindow({ width: 400, height: 200 });
+  mainWindow.loadURL(`file:\\${__dirname/indexedDB.html}`)
+  mainWindow.on('closed', () => {mainWindow = null;});
+
+});
+function toggleFullScreen(){
+const button = document.getElementById('fullscreen');
+const win = remote.getCurrentWindow();
+if(win.isFullScreen()){
+  win.setFullScreen(false);
+  button.innerText = 'Go Full Screen';
+  } else{
+    win.setFullScreen(true);
+    button.innerText = 'Exit Full Screen';
+  }
+
+}
