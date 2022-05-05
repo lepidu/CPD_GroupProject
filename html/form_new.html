@@ -58,22 +58,22 @@
                 
                 <input type="submit" />
             </form>
-           <!--
+        
              <script>
-                const electron = require("electron");
-                const { ipcRenderer } = electron;
-                const form = document.getElementById("form_new");
+                const ipc = require('electron').ipcRenderer;
+                const form = document.getElementById('form_new');
                 const elements = {};
+
                 form.addEventListener("submit", event => {
                 event.preventDefault();
+
                 for (let i = 0; i < form.elements.length; i++) {
                 if (form.elements[i].type !== "submit")
                 elements[form.elements[i].name] = form.elements[i].value;
                 }
-                ipcRenderer.send("appointment:create", elements);
-                });
-            </script>*/
-           -->
+                ipc.send("newUser:information", elements);
+                }); 
+            </script>
           
     </body>
 </html>

@@ -35,8 +35,14 @@ mainWindow.loadURL('file://' + __dirname + '/html/documents_renewal.html');
 });
 
 ipc.on("newUser:document", (event, document) => {
-    document["id"] = uuid();
+    //document["id"] = uuid(); ---> check 
     newUsers.push(document);
+    sendNewUser();
+   });
+
+ipc.on("newUser:information", (event, information) => {
+    //document["id"] = uuid(); ---> check 
+    newUsers.push(information);
     sendNewUser();
    });
 
@@ -44,5 +50,4 @@ ipc.on("newUser:document", (event, document) => {
     const filtered = newUsers.filter(
     information => information.surname
     );
-    todayWindow.webContents.send("appointment:response:today", filtered);
    };   
