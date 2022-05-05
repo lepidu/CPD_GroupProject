@@ -4,7 +4,7 @@
 </head>
     <body>
         <h1> Registration Visa </h1>
-            <form id="form_new" action="documents_new.html">
+            <form id="form_new">
 
                 <label for="name">Forename(s) as on your current IRPP card:</label><br />
                 <input type="text" name="name" required />
@@ -13,17 +13,17 @@
                 <input type="text" name="surname" required />
                 <br /><br />
                 <label for="date">Date of birth:</label><br />
-                <input type="text" name="date" required />
+                <input type="text" name="date" placeholder="YYYY-MM-DD" required />
                 <br /><br />
-                <label for="Gender">Select a Gender</label><br/>
-                 <select name="Gender" size="3">
-                    <option value="Male" selected="selected">Male</option>
-                    <option value="Female" selected="selected">Female</option>
-                    <option value="Non Binary" selected="selected">Non Binary</option>
+                <label for="gender">Select a Gender</label><br/>
+                 <select name="gender">
+                    <option value="male" selected="selected">Male</option>
+                    <option value="female" selected="selected">Female</option>
+                    <option value="non_binary" selected="selected">Non Binary</option>
                 </select>
                 <br /><br />
                 <label for="phone">Phone number:</label><br />
-                <input type="text" name="phone" required />
+                <input type="text" name="phone" placeholder="0123456789" required />
                 <br /><br />
                 <label for="address">Current postal address:</label><br />
                 <input type="text" name="address" required />
@@ -35,19 +35,23 @@
                 <input type="text" name="county" required />
                 <br /><br />
                 <label for="eircode">Eircode:</label><br />
-                <input type="text" name="eircode" required />
+                <input type="text" name="eircode" placeholder="D234567" required />
                 <br /><br />
                 <label for="nationality">Nationality:</label><br />
                 <input type="text" name="nationality" required />
                 <br /><br />
                 <label for="pass_num">Passport number:</label><br />
-                <input type="text" name="pass_num" required />
+                <input type="text" name="pass_num" placeholder="X12345678" required />
                 <br /><br />
                 <label for="pass_expiry">Passport expiry date:</label><br />
-                <input type="text" name="pass_expiry" required />
+                <input type="text" name="pass_expiry" placeholder="YYYY-MM-DD" required />
                 <br /><br />
                 <label for="visa_type">Permission type:</label><br />
-                <input type="text" name="visa_type" required />
+                <select name="visa_type">
+                    <option value="visa_2" selected="selected">Stamp 2</option>
+                    <option value="visa_2a" selected="selected">Stamp 2A</option>
+                    <option value="visa_1g" selected="selected">Stamp 1G</option>
+                </select><br>
                 <br /><br />
                 <label for="school">Institute name:</label><br />
                 <input type="text" name="school" required />

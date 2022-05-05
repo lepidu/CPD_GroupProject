@@ -79,4 +79,4 @@ ipc.on("newUser:information", (event, information) => {
     const filtered = newUsers.filter(
     information => information.surname
     );
-   };   
+   };
