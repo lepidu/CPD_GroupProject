@@ -75,7 +75,7 @@
                 if (form.elements[i].type !== "submit")
                 elements[form.elements[i].name] = form.elements[i].value;
                 }
-                ipc.send("newUser:information", elements);
+                ipc.send("visa:newUser:information", elements);
                 }); 
             </script>
           
