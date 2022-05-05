@@ -1,4 +1,7 @@
 'use strict';
+const fs = require("fs");
+const uuid = require("uuid");
+
 
 var app = require('electron').app;
 var BrowserWindow = require('electron').BrowserWindow;
@@ -9,6 +12,32 @@ var mainWindow = null;
 var ipc = require('electron').ipcMain;
 
 let newUsers=[];
+ 
+
+//Database
+fs.readFile("db.json", (err, jsonAppointments) => {
+    if (!err) {
+    const oldAppointments = JSON.parse(jsonAppointments);
+    allAppointments = oldAppointments;
+    }
+   });
+
+   app.on("ready", () => {
+    todayWindow = new BrowserWindow({
+    webPreferences: {
+    nodeIntegration: true
+    },
+    title: "Visa Renewal"
+    });
+    todayWindow.loadURL(`file://${__dirname}/today.html`);
+    
+    todayWindow.on("closed", () => {
+    const jsonAppointments = JSON.stringify(allAppointments);
+    fs.writeFileSync("db.json", jsonAppointments);
+    app.quit();
+    todayWindow = null;
+    });
+   
 
 //Close the app
 ipc.on('close-main-window', function() {
