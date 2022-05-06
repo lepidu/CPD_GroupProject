@@ -1,0 +1,44 @@
+<html>
+    <body>
+        <h1>List window</h1>
+        <div id="list"></div>
+        <script>
+            
+            const electron = require("electron");
+            const { ipcRenderer } = electron;
+            
+            
+            ipcRenderer.send("visa:request:list");
+            ipcRenderer.on("visa:response:list", (event, visas) => {
+            const listDiv = document.getElementById("list");
+            visas.forEach(visa => {
+            const appointmentDiv = document.createElement("div");
+            const nameParagraph = document.createElement("p");
+            nameParagraph.innerHTML = `Name: ${visa.name}`;
+            const numberParagraph = document.createElement("p");
+            numberParagraph.innerHTML = `Phone Number: ${visa.number}`;
+            const dateParagraph = document.createElement("p");
+            dateParagraph.innerHTML = `Date: ${visa.date}`;
+            const timeParagraph = document.createElement("p");
+            timeParagraph.innerHTML = `Time: ${visa.time}`;
+            const symptomsParagraph = document.createElement("p");
+            symptomsParagraph.innerHTML = `Symptoms: ${visa.symptoms}`;
+            
+            const doneParagraph = document.createElement("p");
+            doneParagraph.innerHTML = `Done: ${visa.done ? "Yes" : "No"}`;
+            const hr = document.createElement("hr");
+ 
+            visaDiv.appendChild(nameParagraph);
+            visaDiv.appendChild(numberParagraph);
+            visaDiv.appendChild(dateParagraph);
+            visaDiv.appendChild(timeParagraph);
+            visaDiv.appendChild(symptomsParagraph);
+            visaDiv.appendChild(doneParagraph);
+            visaDiv.appendChild(hr);
+            
+            listDiv.append(visaDiv);
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -110,7 +110,7 @@ ipcMain.on("visa:renewalUser:information", (event, renewalUser) => {
 
 
 ipcMain.on("visa:newUser&renewalUser:list", event => {
-    adminList.webContents.send("visa:newUser&renewalUser:list",
+    adminList.webContents.send("visa:response:list",
     allVisas);
 });
 
@@ -124,13 +124,14 @@ ipcMain.on("visa:done", (event, id) => {
     });
     sendAllVisas();
 });
+
 //Modify this part filtered type of visa
 const sendAllVisas = () => {
     const today = new Date().toISOString().slice(0, 10);
     const filtered = allAppointments.filter(
         appointment => appointment.date === today
     );
-    todayWindow.webContents.send("appointment:response:today", filtered);
+    todayWindow.webContents.send("visa:response:type", filtered);
 };
 
 //Create the menu bar in the application
@@ -139,15 +140,15 @@ const menuTemplate = [
     label: "File",
     submenu: [
         {
-            label: "New Appointment",
+            label: "All visas",
             click() {
-            newFormCreator();
+            adminListCreator();
             }
         },
         {
             label: "New Visa",
             click() {
-            listWindowCreator();
+            newFormCreator();
             }
         },
         {
