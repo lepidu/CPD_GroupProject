@@ -1,4 +1,8 @@
 <html>
+    <head>
+        <title>Registration Renewal Visa</title>
+        <script src="app.js"></script>
+    </head>
     <body>
         <h1> Registration Renewal </h1>
             <form id="form_renewal">
@@ -7,7 +11,7 @@
                 <input type="text" name="regis_num" required />
                 <br /><br />
                 <label for="irp_expiry">Current IRP expiry date:</label><br />
-                <input type="text" name="irp_expiry" required />
+                <input type="text" name="irp_expiry" placeholder="YYYY-MM-DD" required />
                 <br /><br />
                 <label for="name">Forename(s) as on your current IRPP card:</label><br />
                 <input type="text" name="name" required />
@@ -16,13 +20,16 @@
                 <input type="text" name="surname" required />
                 <br /><br />
                 <label for="date">Date of birth:</label><br />
-                <input type="text" name="date" required />
+                <input type="text" name="date" placeholder="YYYY-MM-DD" required />
                 <br /><br />
-                <label for="gender">Gender:</label><br />
-                <input type="text" name="gender" required />
-                <br /><br />
+                <label for="gender">Select a Gender</label><br/>
+                <select name="gender">
+                   <option value="male" selected="selected">Male</option>
+                   <option value="female" selected="selected">Female</option>
+                   <option value="non_binary" selected="selected">Non Binary</option>
+               </select><br>
                 <label for="phone">Phone number:</label><br />
-                <input type="text" name="phone" required />
+                <input type="text" name="phone" placeholder="0123456789" required />
                 <br /><br />
                 <label for="address">Current postal address:</label><br />
                 <input type="text" name="address" required />
@@ -34,19 +41,23 @@
                 <input type="text" name="county" required />
                 <br /><br />
                 <label for="eircode">Eircode:</label><br />
-                <input type="text" name="eircode" required />
+                <input type="text" name="eircode" placeholder="D234567" required />
                 <br /><br />
                 <label for="nationality">Nationality:</label><br />
                 <input type="text" name="nationality" required />
                 <br /><br />
                 <label for="pass_num">Passport number:</label><br />
-                <input type="text" name="pass_num" required />
+                <input type="text" name="pass_num" placeholder="X12345678" required />
                 <br /><br />
                 <label for="pass_expiry">Passport expiry date:</label><br />
-                <input type="text" name="pass_expiry" required />
+                <input type="text" name="pass_expiry" placeholder="YYYY-MM-DD" required />
                 <br /><br />
                 <label for="visa_type">Permission type for renewal:</label><br />
-                <input type="text" name="visa_type" required />
+                <select name="visa_type">
+                    <option value="visa_2" selected="selected">Stamp 2</option>
+                    <option value="visa_2a" selected="selected">Stamp 2A</option>
+                    <option value="visa_1g" selected="selected">Stamp 1G</option>
+                </select><br>
                 <br /><br />
                 <label for="school">Institute name:</label><br />
                 <input type="text" name="school" required />
@@ -60,21 +71,22 @@
                 <label for="student_id">Student ID / student number:</label><br />
                 <input type="text" name="student_id" required />
                 <br /><br />
-                <input type="submit" />
+                <input type="submit" onclick="saveInfo()" />
             </form>
             <script>
-                const electron = require("electron");
-                const { ipcRenderer } = electron;
-                const form = document.getElementById("form_renewal");
+                const ipc = require('electron').ipcRenderer;
+                const form = document.getElementById('form_renewal');
                 const elements = {};
+
                 form.addEventListener("submit", event => {
                 event.preventDefault();
+
                 for (let i = 0; i < form.elements.length; i++) {
                 if (form.elements[i].type !== "submit")
                 elements[form.elements[i].name] = form.elements[i].value;
                 }
-                ipcRenderer.send("appointment:create", elements);
-                });
+                ipc.send("visa:renewal:information", elements);
+                }); 
             </script>
     </body>
 </html>
